@@ -1,0 +1,33 @@
+@use "bootstrap" as bs;
+
+@include bs.media-breakpoint-up('xs', bs.$grid-breakpoints) {
+  // your styles here
+}
+
+@include bs.media-breakpoint-down('xs', bs.$grid-breakpoints) {
+  // your styles here
+}
+
+@include bs.media-breakpoint-up('sm', bs.$grid-breakpoints) {
+  // your styles here
+}
+
+@include bs.media-breakpoint-down('sm', bs.$grid-breakpoints) {
+  // your styles here
+}
+
+@include bs.media-breakpoint-up('md', bs.$grid-breakpoints) {
+  // your styles here
+}
+
+@include bs.media-breakpoint-down('md', bs.$grid-breakpoints) {
+  // your styles here
+}
+
+@include bs.media-breakpoint-up('lg', bs.$grid-breakpoints) {
+  // your styles here
+}
+
+@include bs.media-breakpoint-down('lg', bs.$grid-breakpoints) {
+  // your styles here
+}

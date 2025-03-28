@@ -1,0 +1,36 @@
+{
+  "name": "Zombie",
+  "version": "1.0.0",
+  "description": "A starter WordPress theme with a custom build process",
+  "scripts": {
+    "clean": "rimraf dist",
+    "sass:dev": "sass --quiet-deps --load-path=node_modules/bootstrap/scss assets/scss/main.scss:dist/css/main.min.css --source-map",
+    "postcss:dev": "postcss dist/css/main.min.css -o dist/css/main.min.css --map",
+    "css:dev": "npm run sass:dev && npm run postcss:dev",
+    "js:dev": "mkdir -p dist/js && concat -o dist/js/site.js node_modules/bootstrap/dist/js/bootstrap.min.js assets/js/site.js && terser dist/js/site.js -o dist/js/site.min.js --source-map && rm -f dist/js/site.js",
+    "js:prod": "mkdir -p dist/js && concat -o dist/js/site.js node_modules/bootstrap/dist/js/bootstrap.min.js assets/js/site.js && terser dist/js/site.js -o dist/js/site.min.js --no-source-map && rm -f dist/js/site.js",
+    "watch:sass": "sass --quiet-deps --load-path=node_modules/bootstrap/scss assets/scss/main.scss:dist/css/main.min.css --watch --source-map",
+    "watch:js": "onchange \"assets/js/**/*.js\" -- npm run js:dev",
+    "browser-sync": "browser-sync start --config bs-config.js",
+    "dev": "npm run clean && npm run css:dev && npm run js:dev && concurrently \"npm run watch:sass\" \"npm run watch:js\"",
+    "sync": "npm run clean && npm run css:dev && npm run js:dev && concurrently \"npm run watch:sass\" \"npm run watch:js\" \"npm run browser-sync\"",
+    "prod": "npm run clean && sass --quiet-deps --load-path=node_modules/bootstrap/scss assets/scss/main.scss:dist/css/main.min.css --no-source-map && NODE_ENV=production postcss dist/css/main.min.css --no-map -o dist/css/main.min.css && npm run js:prod"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "browser-sync": "^3.0.3",
+    "concat-cli": "^4.0.0",
+    "concurrently": "^9.1.2",
+    "cssnano": "^7.0.6",
+    "dotenv": "^16.4.7",
+    "onchange": "^7.1.0",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.1",
+    "rimraf": "^6.0.1",
+    "sass": "^1.86.0",
+    "terser": "^5.39.0"
+  }
+}
