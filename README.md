@@ -42,7 +42,7 @@ Zombie is a bare-bones WordPress theme designed as a starting point for theme de
 2. **Clone the Repository:**
 
     ```bash
-    git clone git@github.com:13pixlar/zombie.git .
+    git clone git@github.com:Adapt-AB/zombie.git .
     ```
 
 3. **Install Composer Dependencies:**
